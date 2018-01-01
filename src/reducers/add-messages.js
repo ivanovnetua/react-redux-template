@@ -2,22 +2,22 @@ const defaultState = {
     messages: [
         {
             id: 1,
-            sender: 'Vladimir',
-            text: 'hello!'
+            author: 'Vladimir',
+            text: 'hello!',
         },
         {
             id: 2,
-            sender: 'Den',
+            author: 'Den',
             text: 'ola!'
         },
         {
             id: 3,
-            sender: 'Sarah',
+            author: 'Sarah',
             text: 'salut!'
         },
         {
             id: 4,
-            sender: 'Jack',
+            author: 'Jack',
             text: 'yo!'
         },
     ]
