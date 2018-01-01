@@ -3,26 +3,26 @@ const defaultState = {
         {
             id: 1,
             name: 'Vladimir',
-            position: 'front-end'
         },
         {
             id: 2,
             name: 'Den',
-            position: 'back-end'
         },
         {
             id: 3,
             name: 'Sarah',
-            position: 'QA tester'
         },
         {
             id: 4,
             name: 'Jack',
-            position: 'Mobile developer'
         },
     ]
 };
 
-export default function AppReducer(state = defaultState, action) {
+export default function addUsers(state = defaultState, action) {
+    if (action.type === 'ADD_NEW_USER') {
+        return { ...state, users: [...state.users, action.user] }
+    }
+
     return state
 };
