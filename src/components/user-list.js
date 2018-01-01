@@ -1,5 +1,8 @@
 import React, { Component}  from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addNewUserAction } from '../actions/actions'
+
 
 class UserList extends Component {
     getRandomUser() {
@@ -35,7 +38,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addNewUser: user => dispatch({ type: "ADD_NEW_USER", user })
+        addNewUser: bindActionCreators(addNewUserAction, dispatch)
     }
 
 };
