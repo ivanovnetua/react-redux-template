@@ -2,10 +2,17 @@ import React, { Component}  from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addNewUserAction } from '../actions/actions';
+import { changeUserAction } from '../actions/actions';
 import Time from 'react-time';
 
 
 class UserList extends Component {
+    constructor(props) {
+        super(props);
+        const defaultUserId = props.users.length !== 0 ? props.users[0].id : 0;
+        props.changeActiveUser(defaultUserId);
+    }
+
     getRandomUser() {
         return {
             id: Date.now(),
@@ -22,7 +29,7 @@ class UserList extends Component {
                         <ul className="people">
                             { this.props.users.map(user => {
                                 return (
-                                    <li className="person" key={ user.id }>
+                                    <li className="person" key={ user.id } onClick={ () => { this.props.changeActiveUser(user.id) } }>
                                         <img src={ user.avatar } alt="" />
                                         <span className="name">{ user.name }</span>
                                         <span className="time">
@@ -45,13 +52,15 @@ class UserList extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        users: state.addUsers.users
+        users: state.addUsers.users,
+        activeUser: state.changeUser.activeUser
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addNewUser: bindActionCreators(addNewUserAction, dispatch)
+        addNewUser: bindActionCreators(addNewUserAction, dispatch),
+        changeActiveUser: bindActionCreators(changeUserAction, dispatch)
     }
 
 };

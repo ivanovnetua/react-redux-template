@@ -2,23 +2,33 @@ const defaultState = {
     messages: [
         {
             id: 1,
-            author: 'Vladimir',
+            senderId: 1,
+            receiverId: 0,
             text: 'hello!',
         },
         {
             id: 2,
-            author: 'Den',
+            senderId: 2,
+            receiverId: 0,
             text: 'ola!'
         },
         {
             id: 3,
-            author: 'Sarah',
+            senderId: 3,
+            receiverId: 0,
             text: 'salut!'
         },
         {
             id: 4,
-            author: 'Jack',
+            senderId: 4,
+            receiverId: 0,
             text: 'yo!'
+        },
+        {
+            id: 5,
+            senderId: 0,
+            receiverId: 1,
+            text: 'my message!'
         },
     ]
 };

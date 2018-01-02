@@ -8,6 +8,13 @@ export const addNewMessageAction = (message) => {
 export const addNewUserAction = (user) => { 
     return { 
         type: "ADD_NEW_USER",
-        user: user 
+        user: user
+    }
+};
+
+export const changeUserAction = (activeUser) => { 
+    return { 
+        type: "CHANGE_USER",
+        activeUser: activeUser
     }
 };
