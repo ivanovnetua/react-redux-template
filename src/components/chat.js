@@ -10,8 +10,17 @@ class Chat extends Component {
         return (
             <div className="wrapper">
                 <div className="container">
-                    <UserList users={ this.props.users } changeActiveUser={ this.props.changeActiveUser } addNewUser={ this.props.addNewUser }></UserList>
-                    <MessagesList messages={ this.props.messages } addNewMessage={ this.props.addNewMessage } usersInfo={ this.props.users } activeUser={ this.props.activeUser }></MessagesList>
+                    <UserList 
+                        users={ this.props.users } 
+                        changeActiveUser={ this.props.changeActiveUser }
+                        addNewUser={ this.props.addNewUser }
+                    ></UserList>
+
+                    <MessagesList
+                        addNewMessage={ this.props.addNewMessage } 
+                        activeUser={ this.props.activeUser }
+                        activeMessages = { this.props.messages }
+                    ></MessagesList>
                 </div>
             </div>
         )
@@ -19,10 +28,14 @@ class Chat extends Component {
 }
 
 const mapStateToProps = (state) => {
+    const activeMessages = state.addMessages.messages.filter(message => { 
+        return message.senderId === state.changeUser.activeUser.id || message.receiverId === state.changeUser.activeUser.id
+    });
+
     return {
         users: state.addUsers.users,
         activeUser: state.changeUser.activeUser,
-        messages: state.addMessages.messages
+        messages: activeMessages
     }
 }
 

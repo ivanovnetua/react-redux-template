@@ -3,19 +3,13 @@ import Time from 'react-time';
 
 
 export default class UserList extends Component {
-    constructor(props) {
-        super(props);
-        const defaultUserId = props.users.length !== 0 ? props.users[0].id : 0;
-        props.changeActiveUser(defaultUserId);
-    }
-
     getRandomUser() {
         return {
             id: Date.now(),
             name: `user-${ Date.now() }`,
             time: Date.now()
         }
-    };
+    }
 
     render() {
         const randomUser = this.getRandomUser();
@@ -25,7 +19,7 @@ export default class UserList extends Component {
                         <ul className="people">
                             { this.props.users.map(user => {
                                 return (
-                                    <li className="person" key={ user.id } onClick={ () => { this.props.changeActiveUser(user.id) } }>
+                                    <li className="person" key={ user.id } onClick={ () => { this.props.changeActiveUser(user) } }>
                                         <img src={ user.avatar } alt="" />
                                         <span className="name">{ user.name }</span>
                                         <span className="time">
