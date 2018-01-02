@@ -1,12 +1,8 @@
 import React, { Component}  from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { addNewUserAction } from '../actions/actions';
-import { changeUserAction } from '../actions/actions';
 import Time from 'react-time';
 
 
-class UserList extends Component {
+export default class UserList extends Component {
     constructor(props) {
         super(props);
         const defaultUserId = props.users.length !== 0 ? props.users[0].id : 0;
@@ -49,20 +45,3 @@ class UserList extends Component {
         )   
      }
 };
-
-const mapStateToProps = (state) => {
-    return {
-        users: state.addUsers.users,
-        activeUser: state.changeUser.activeUser
-    }
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addNewUser: bindActionCreators(addNewUserAction, dispatch),
-        changeActiveUser: bindActionCreators(changeUserAction, dispatch)
-    }
-
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserList);

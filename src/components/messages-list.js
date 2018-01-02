@@ -1,9 +1,6 @@
 import React, { Component}  from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { addNewMessageAction } from '../actions/actions';
 
-class UserMessagesList extends Component {
+export default class UserMessagesList extends Component {
     constructor(props) {
         super(props);
         this.activeMessages = this.filterMessages(props.messages, props.activeUser);
@@ -80,20 +77,3 @@ class UserMessagesList extends Component {
         )   
      }
 };
-
-const mapStateToProps = (state) => {
-    return {
-        messages: state.addMessages.messages,
-        activeUser: state.changeUser.activeUser,
-        usersInfo: state.addUsers.users,
-    }
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addNewMessage: bindActionCreators(addNewMessageAction, dispatch)
-    }
-
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserMessagesList);
