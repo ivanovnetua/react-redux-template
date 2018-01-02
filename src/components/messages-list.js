@@ -6,9 +6,9 @@ export default class UserMessagesList extends Component {
 
         if (message.length !== 0) {
             const fullMessage = {
-                id: `${ this.props.activeUser }_${ Date.now() }`,
+                id: `${ this.props.activeUser.id }_${ Date.now() }`,
                 senderId: 0,
-                receiverId: this.props.activeUser,
+                receiverId: this.props.activeUser.id,
                 text: message
             };
 

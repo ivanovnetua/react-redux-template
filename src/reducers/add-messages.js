@@ -34,6 +34,7 @@ const defaultState = {
 };
 
 export default function addMessages(state = defaultState, action) {
+    console.log(action);
     if (action.type === 'ADD_NEW_MESSAGE') {
         return { ...state, messages: [...state.messages, action.message] }
     }
